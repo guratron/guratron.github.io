@@ -1,31 +1,33 @@
 <html>
-<body>
+
 <head>
-<title>
-OPERATION BANANHJÄRTA 2019
-</title>
+	<title>
+		OPERATION BANANHJÄRTA 2019
+	</title>
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="bootstrap.min.css">
+<body>
+	<br><br>
+	<div ng-app="" width="100%" style="text-align: center;">
+		I Lloyds labyrint måste man undvika strålar av <input ng-model="one"></input>
+		<div ng-if="one.toLowerCase()=='laser'">
+			<br>
+			Första uppgiften avklarad...men nu blir det svårare! <br>
+			En ninjas kaststjärna heter egentligen på japanska <input ng-model="two"></input>
+			<div ng-if="two.toLowerCase()=='shuriken'">
+				<br>Intressant, kanske en värdig ninja som antagit operationen i år...<br>
+				Världens snabbaste orm har samma färg som Cole... Den heter: <input ng-model="three"></input>
+				<div ng-if="three.toLowerCase()=='svart mamba'">
+					<br>KALAS!!!<br><img src="dance.gif"><img src="dance.gif"><img src="dance.gif">
+					<audio id="aud" loop autoplay src="kalas.mp3">
+					</audio>
 
-<div ng-app="">
-	
-	Ninjor är allergiska mot <input ng-model="one"></input>
-	<div ng-if="one.toLowerCase()=='laser'">
-		Första uppgiften avklarad...men nu blir det svårare! <br>
-		En ninjas kaststjärna heter egentligen på japanska <input ng-model="two"></input>
-		<div ng-if="two.toLowerCase()=='shuriken'">
-			Andra uppgiften avklarad!!!
-			Världens snabbaste orm har samma färg som Cole... Den heter: <input ng-model="three"></input>
-			<div ng-if="three.toLowerCase()=='svart mamba'">
-				KALAS!!! <img src="dance.gif">
-					<audio id="aud" autoplay src="MorgonPiano2_BuchlaOrganMeUp.wav">
-	</audio>
-
+				</div>
 			</div>
 		</div>
-	</div>
 
-</div>
+	</div>
 </body>
+
 </html>
