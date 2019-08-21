@@ -7,21 +7,23 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
 <link rel="stylesheet" href="bootstrap.min.css">
+
 <body>
 	<br><br>
 	<div ng-app="" width="100%" style="text-align: center;">
 		I Lloyds labyrint måste man undvika strålar av <input ng-model="one"></input>
 		<div ng-if="one.toLowerCase()=='laser'">
+			<audio autoplay src="laser.wav"></audio>
 			<br>
 			Första uppgiften avklarad...men nu blir det svårare! <br>
 			En ninjas kaststjärna heter egentligen på japanska <input ng-model="two"></input>
 			<div ng-if="two.toLowerCase()=='shuriken'">
+				<audio autoplay src="whoosh.wav"></audio>
 				<br>Intressant, kanske en värdig ninja som antagit operationen i år...<br>
 				Världens snabbaste orm har samma färg som Cole... Den heter: <input ng-model="three"></input>
 				<div ng-if="three.toLowerCase()=='svart mamba'">
 					<br>KALAS!!!<br><img src="dance.gif"><img src="dance.gif"><img src="dance.gif">
-					<audio id="aud" loop autoplay src="kalas.mp3">
-					</audio>
+					<audio loop autoplay src="kalas.mp3"></audio>
 
 				</div>
 			</div>
