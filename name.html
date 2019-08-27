@@ -1,0 +1,160 @@
+<html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<script>
+    var app = angular.module('nameGen', []);
+    /*['$scope', '$routeParams', '$location', 'Authentication', 'Articles',
+            function($scope, $routeParams, $location, Authentication, Articles){
+                $scope.authentication = Authentication;*/
+
+    app.controller('mainController', ['$scope', '$http', '$window', '$document', function ($scope, $http, $window, $document) {
+        $scope.folderPath = "Weapons\\Handheld"
+        $scope.identifier = "AK47"
+        $scope.assetType = "Wave"
+        $scope.waveType = "Wave"
+        $scope.ReplaceSlashes = function (str) {
+            if (str === undefined) return "";
+            return str.replace(/\\/g, "_");
+        };
+        $scope.GetSuffix = function (assetType, waveType) {
+            console.log(waveType);
+            if (assetType == "Wave") {
+                let suffix = ""
+                if (waveType != "") {
+                    suffix += waveType + "_"
+                }
+                suffix += "01"
+                return suffix
+            }
+            else return assetType;
+        }
+        $scope.GetQualityPreset = function (folderPath) {
+
+            if (folderPath.includes("VO\\"))
+                if (folderPath.includes("Radio"))
+                    return "BF_VO_Radio"
+                else
+                    return "BF_VO"
+            if (folderPath.includes("Weapons\\"))
+                return "BF_Weapon"
+            if (folderPath.includes("Ambience\\"))
+                return "BF_Ambience"
+            return "Default"
+        }
+    }]);
+</script>
+<style>
+    .field {
+        width: 500px;
+        height: 25px;
+    }
+
+    br {
+        content: " ";
+        display: block;
+        margin: 10px;
+    }
+
+    .row {
+        height: 40px;
+    }
+
+    .col-sm-2 {
+        text-align: right;
+    }
+
+    label {
+        font-weight: normal;
+    }
+</style>
+
+<body>
+
+    <br><br>
+    <div ng-app="nameGen" ng-controller="mainController" class="container" style="margin: 200px">
+        <div class="row">
+            <div class="col-sm-2">
+                Folder path
+            </div>
+            <div class="col-sm-4">
+                <input class="field" ng-model="folderPath" placeholder="Folder name"></input><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                Identifier
+            </div>
+            <div class="col-sm-4">
+                <input class="field" ng-model="identifier" placeholder="Identifier"></input><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                Asset type
+            </div>
+            <div class="col-sm-4">
+                <select class="field" ng-model="assetType"><br>
+                    <option>Wave</option>
+                    <option>Patch</option>
+                    <option>Config</option>
+                </select>
+            </div>
+        </div>
+        <div class="row" ng-style="{visibility: assetType == 'Wave' ? 'visible':'hidden'}">
+            <div class="col-sm-2">
+                Wave Options
+            </div>
+            <div class="col-sm-10">
+                <div>
+                    <label>
+                        <input type="radio" ng-model="waveType" name="waveType" value="Wave"> Single &nbsp;
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="waveType" name="waveType" value="Loop"> Looping &nbsp;
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="waveType" name="waveType" value="Markers"> Variations From Markers
+                        &nbsp;
+                    </label>
+                    <label>
+                        <input type="radio" ng-model="waveType" name="waveType" value="StartIdleStop"> StartIdleStop
+                        &nbsp;
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="background-color: #EEEEEE; height:3px">
+        </div>
+        <div class="row" style="height: 15px;">
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                Filename
+            </div>
+            <div class="col-sm-4" style="font-weight: bold">
+                BF01_{{ReplaceSlashes(folderPath)}}_{{identifier}}_{{GetSuffix(assetType,waveType)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                Quality Preset
+            </div>
+            <div class="col-sm-4">
+                {{GetQualityPreset(folderPath)}}
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+
+    <br><br>
+
+
+
+</body>
+
+</html>
