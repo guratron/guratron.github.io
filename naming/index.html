@@ -44,6 +44,11 @@
                 return "BF_Ambience"
             return "Default"
         }
+        $scope.GetDataPolicy = function(folderPath) {
+            if (folderPath.includes("Weapons\\"))
+                return "Persistent 3";
+            return "Default";
+        }
     }]);
 </script>
 <style>
@@ -144,6 +149,30 @@
             </div>
             <div class="col-sm-4">
                 {{GetQualityPreset(folderPath)}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                CreateVariationsFromMarkers
+            </div>
+            <div class="col-sm-4">
+                {{waveType == 'Markers' ? '&#10003;' : ''}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                Streaming
+            </div>
+            <div class="col-sm-4">
+                {{folderPath.includes('VO\\') ? '&#10003;' : ''}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                DataPolicy
+            </div>
+            <div class="col-sm-4">
+                {{GetDataPolicy(folderPath)}}
             </div>
         </div>
     </div>
