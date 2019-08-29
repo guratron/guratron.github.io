@@ -24,15 +24,18 @@
             return str.replace(/\\/g, "_");
         };
         $scope.GetSuffix = function (assetType, waveType) {
+            let suffix = ""
             if (assetType == "Wave") {
-                let suffix = ""
+
                 if (waveType != "") {
-                    suffix += waveType + "_"
+                    suffix = waveType
                 }
-                suffix += "01"
-                return suffix
             }
-            else return assetType;
+            else {
+                suffix = assetType
+            };
+            suffix += "_01"
+            return suffix
         }
         $scope.GetQualityPreset = function (folderPath) {
 
@@ -72,41 +75,41 @@
             {
                 folderPath: "VO\\Radio\\Announcer\\Conquest\\ObjectiveLost",
                 identifier: "A",
-                assetType:  "Wave",
-                waveType:   "Wave"
-            },{
+                assetType: "Wave",
+                waveType: "Wave"
+            }, {
                 folderPath: "VO\\InWorld\\InWorld\\Conquest\\ObjectiveLost",
                 identifier: "A",
-                assetType:  "Wave",
-                waveType:   "Wave"
-            },{
+                assetType: "Wave",
+                waveType: "Wave"
+            }, {
                 folderPath: "Weapons\\Handheld",
                 identifier: "BAR1988",
-                assetType:  "Wave",
-                waveType:   "Markers"
-            },{
+                assetType: "Wave",
+                waveType: "Markers"
+            }, {
                 folderPath: "Weapons\\Handheld",
                 identifier: "BAR1988",
-                assetType:  "Config"
+                assetType: "Config"
             },
             {
                 folderPath: "Weapons\\SourcePatches",
                 identifier: "Automatic",
-                assetType:  "Patch"
-            },{
+                assetType: "Patch"
+            }, {
                 folderPath: "Ambience\\SourcePatches",
                 identifier: "SoundAreaQuad",
-                assetType:  "Patch"
-            },{
+                assetType: "Patch"
+            }, {
                 folderPath: "Ambience\\MP_Jungle\\SoundAreas",
                 identifier: "Global",
-                assetType:  "Config"
+                assetType: "Config"
             },
             {
                 folderPath: "Ambience\\MP_Jungle\\SoundAreas",
                 identifier: "Global",
-                assetType:  "Wave",
-                waveType:   "Markers"
+                assetType: "Wave",
+                waveType: "Markers"
             },
         )
 
@@ -253,7 +256,7 @@
         <div class="row">
             <strong>Recently imported assets</strong>
         </div>
-        
+
         <div class="row" ng-repeat="asset in assetList">
             <div class="col-sm-2">
                 {{asset.assetType}}
