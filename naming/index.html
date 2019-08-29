@@ -55,6 +55,16 @@
                 return "Persistent 3";
             return "Default";
         }
+        $scope.GetFilename = function (asset) {
+            //BF01_{{ReplaceSlashes(asset.folderPath)}}_{{asset.identifier}}_{{GetSuffix(asset.assetType,asset.waveType)}}
+            let filename = "BF01_";
+            filename += $scope.ReplaceSlashes(asset.folderPath);
+            filename += "_";
+            filename += asset.identifier;
+            filename += "_";
+            filename += $scope.GetSuffix(asset.assetType,asset.waveType);
+            return filename;
+        }
         $scope.SaveAsset = function () {
             $scope.assetList.push({
                 folderPath: $scope.assetIn.folderPath,
@@ -206,7 +216,7 @@
                 Filename
             </div>
             <div class="col-sm-4" style="font-weight: bold">
-                BF01_{{ReplaceSlashes(assetIn.folderPath)}}_{{assetIn.identifier}}_{{GetSuffix(assetIn.assetType,assetIn.waveType)}}
+                {{GetFilename(assetIn)}}
             </div>
         </div>
         <div class="row" ng-style="{visibility: assetIn.assetType == 'Wave' ? 'visible':'hidden'}">
@@ -263,7 +273,7 @@
             </div>
             <div class="col-sm-4">
                 <a
-                    ng-click="LoadAsset(asset)">BF01_{{ReplaceSlashes(asset.folderPath)}}_{{asset.identifier}}_{{GetSuffix(asset.assetType,asset.waveType)}}</a>
+                    ng-click="LoadAsset(asset)">{{GetFilename(asset)}}</a>
             </div>
         </div>
     </div>
